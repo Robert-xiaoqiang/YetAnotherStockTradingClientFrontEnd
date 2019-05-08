@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/index.css';
+import App from './component/App';
+import RegistrationForm from './component/RegistrationForm'
 import * as serviceWorker from './serviceWorker';
+import { Form } from 'antd';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
+ReactDOM.render(<WrappedRegistrationForm />, document.getElementById('root'));
 serviceWorker.unregister();
