@@ -14,6 +14,7 @@ import myProgress from './component/Progress.js';
 import myCarousel from './component/Carousel.js';
 import Stockhold from './component/Stockhold';
 import Fund from './component/Fund';
+import BuyStockForm from './component/BuySellForm';
 // 引入Antd的导航组件
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
@@ -101,7 +102,7 @@ ReactDom.render((
             <IndexRoute component={myIntroduce} />
             <Route path="myIntroduce" component={myIntroduce} />
             <Route path="myTable" component={Stockhold} />
-            <Route path="myForm" component={myForm} />
+            <Route path="myForm" component={BuyStockForm} />
             <Route path="myProgress" component={myProgress} />
             <Route path="myProgress2" component={Fund} />
             <Route path="myCarousel" component={myCarousel} />
