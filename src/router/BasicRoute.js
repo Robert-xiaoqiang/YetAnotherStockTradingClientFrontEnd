@@ -1,7 +1,7 @@
 import React from 'react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
-import Home from '../js/home';
-import Stocksinfo from '../js/stocksinfo';
+import Home from '../js/Home';
+import Stocksinfo from '../js/Stocksinfo';
 
 
 const BasicRoute = () => (

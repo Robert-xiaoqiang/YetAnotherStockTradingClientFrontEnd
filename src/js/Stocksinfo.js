@@ -40,7 +40,7 @@ export default class Stocksinfo extends React.Component {
             render: (text, record) => (
                 <span>
       <a href="javascript:;">Buy {record.name}</a>
-      <Divider type="vertical" />
+      <Divider type="vertical"/>
       <a href="javascript:;">Sell</a>
     </span>
             ),
@@ -65,5 +65,6 @@ export default class Stocksinfo extends React.Component {
             address: 'Sidney No. 1 Lake Park',
             tags: ['cool', 'teacher'],
         }];
-        return (
-     
+        return <Table dataSource={data} columns={columns}/>;
+    }
+}

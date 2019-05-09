@@ -2,8 +2,7 @@ import {
     Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,
 } from 'antd';
 import React from 'react';
-// import '../css/index.css';
-import '../css/Register.css'
+import '../css/index.css';
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
