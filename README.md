@@ -14,7 +14,7 @@
 - `npm build`
 
 # Authors
-- WXQ, JZY
+- WXQ, JZY, ZYZ
 
 # License
 - STFW
