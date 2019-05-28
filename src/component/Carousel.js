@@ -3,7 +3,7 @@ import React from 'react';
 import { Carousel } from 'antd';
 
 
-class myCarousel extends React.Component {
+class APPCarousel extends React.Component {
 
     render() {
         return (
@@ -20,4 +20,4 @@ class myCarousel extends React.Component {
 
 }
 
-export default myCarousel;
+export default APPCarousel;

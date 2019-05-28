@@ -3,7 +3,7 @@ import { Progress, Button } from 'antd';
 const ButtonGroup = Button.Group;
 
 
-class myProgress extends React.Component {
+class APPProgress extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -51,4 +51,4 @@ class myProgress extends React.Component {
     }
 }
 
-export default myProgress;
+export default APPProgress;
