@@ -16,7 +16,7 @@ export default class Fund extends Component{
 
         axios.post('/api/myfund',
         {
-            userinfo:this.userinfo
+            userinfo:this.state.userinfo
         })
         .then((response)=>{
             console.log(response);

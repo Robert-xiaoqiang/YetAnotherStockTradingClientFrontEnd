@@ -48,7 +48,7 @@ export default class Stockhold extends Component {
 
        axios.post('/api/mystock',
         {
-            userinfo:this.userinfo
+            userinfo:this.state.userinfo
         })
         .then((response)=>{
             console.log(response);
