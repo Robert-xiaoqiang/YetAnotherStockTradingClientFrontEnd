@@ -5,11 +5,8 @@ import React, { Component } from 'react';
 import '../css/NormalLoginForm.less';
 class NormalLoginForm extends React.Component {
     constructor(props) {
-        this.state = {
-            isLoading: false
-        };
+        super(props);
     }
-
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -24,9 +21,9 @@ class NormalLoginForm extends React.Component {
                  */
                 localStorage.setItem('userinfo', JSON.stringify(values));
                 message.success('login successed!'); //成功信息
-                let that = this;
-                setTimeout(function() { //延迟进入
-                    that.props.history.push({pathname:'/', state: values});
+                
+                setTimeout(() => { 
+                    this.props.history.push({pathname:'/app', state: values});
                 }, 2000);
             }
         });
@@ -35,7 +32,6 @@ class NormalLoginForm extends React.Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            this.state.isLoding? <Spin size="large" className="loading" /> :
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <Form.Item>
                     {getFieldDecorator('username', {
@@ -68,5 +64,5 @@ class NormalLoginForm extends React.Component {
         );
     }
 }
-
-export default NormalLoginForm;
+const WrappedLogin = Form.create()(NormalLoginForm)
+export default WrappedLogin;

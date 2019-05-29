@@ -11,7 +11,7 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "node_modules/.bin/react-scripts.cmd start",
+    "start": "set PORT=3000 && react-scripts.cmd start",
     "build": ".bin/react-scripts.cmd build",
     "test": ".bin/react-scripts.cmd test",
     "eject": ".bin/react-scripts.cmd eject"
