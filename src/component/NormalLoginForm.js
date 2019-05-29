@@ -3,6 +3,8 @@ import {
 } from 'antd';
 import React, { Component } from 'react';
 import '../css/NormalLoginForm.less';
+//import welcome_svg from logo.svg
+
 class NormalLoginForm extends React.Component {
     constructor(props) {
         super(props);
@@ -33,9 +35,11 @@ class NormalLoginForm extends React.Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <div>
+                <br />
                 <Row type="flex" justify="center">
-                    <p className="login-space">        </p>
+                    <img src="static/img/logo.png" width="100" height="100"/>
                 </Row>
+                <br />
                 <Row type="flex" justify="center">
                     <h1 className="login-space">Welcome to Stock Trade System </h1>
                 </Row>
