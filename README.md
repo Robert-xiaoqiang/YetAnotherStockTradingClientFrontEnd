@@ -1,6 +1,13 @@
 # Stock Trading Client
 
+# What is Git
+
+# How to use Git
+- 1. new a project
+- 2. recreate the project, do 1
+
 # Framework
+
 - React.JS
 
 # Library
