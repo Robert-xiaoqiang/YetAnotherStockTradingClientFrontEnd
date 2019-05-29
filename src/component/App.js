@@ -11,6 +11,7 @@ import Stockhold from './Stockhold';
 import Fund from './Fund';
 import BuySellForm from './BuySellForm';
 import Sider from './Sider';
+import ModifyPassForm from './ModifyPass.js'
 
 const SubMenu = Menu.SubMenu;
 
@@ -53,7 +54,8 @@ function App() {
               <Route path={`${url}/progress`} component={APPProgress}/>
               <Route path={`${url}/progress2`} component={Fund}/>
               <Route path={`${url}/carousel`} component={APPCarousel}/>
-            </>) } 
+              <Route path={`${url}/password`} component={ModifyPassForm}/>   
+           </>) } 
           />
         </div>
       </div>

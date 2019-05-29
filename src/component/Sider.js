@@ -14,7 +14,8 @@ let routeMap = {
     '/form': '2',
     '/progress': '3',
     '/progress2': '4',
-    '/carousel': '5'
+    '/carousel': '5',
+    '/password': '6'
 };
 
 class Sider extends React.Component {
@@ -64,6 +65,7 @@ class Sider extends React.Component {
                         <Menu.Item key="3"><Link to="/app/progress">个人股票一览</Link></Menu.Item>
                         <Menu.Item key="4"><Link to="/app/progress2">个人资产一览</Link></Menu.Item>
                         <Menu.Item key="5"><Link to="/app/carusel">股市惨案</Link></Menu.Item>
+                        <Menu.Item key="6"><Link to="/app/password">修改密码</Link></Menu.Item>
                     </SubMenu>
                 </Menu>
             </div>
