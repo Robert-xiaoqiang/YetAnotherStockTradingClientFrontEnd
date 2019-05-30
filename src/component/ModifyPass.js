@@ -2,26 +2,40 @@ import {
     Form, Icon, Input, Button, Checkbox, message, Spin, Row, Col
 } from 'antd';
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class ModifyPassForm extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userinfo: JSON.parse(localStorage.getItem("userinfo")).username,
+        }
     }
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('values from Form: ', values);
-                this.setState({
-                    isLoding: true,
-                });
-                /**
-                 * AXIO query username
-                 * TODO
-                 */
+                console.log('Received values from Form: ', values);
                 localStorage.setItem('userinfo', JSON.stringify(values));
-                message.success('password changed!'); //成功信息
-           }    
+                axios.post('/api/modifypass',
+                    {
+                        ID: this.state.userinfo,
+                        OldPass: values.old_password,
+                        NewPass: values.new_password
+                    })
+                    .then((response) => {
+                        console.log(response);
+                        let get_data = response.data;
+                        console.log(response.data);
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+                message.success('成功修改密码'); //成功信息
+            }
+            else {
+                message.error('输入信息不足')
+            }
         });
      }
 
