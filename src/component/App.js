@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/index.css';
 import '../css/index_scss.scss';
-import { Redirect, Route, BrowserRouter } from 'react-router-dom';
+import { Redirect, Route, BrowserRouter, Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
 import Introduce from './Introduce.js';
@@ -12,6 +12,7 @@ import Fund from './Fund';
 import BuySellForm from './BuySellForm';
 import Sider from './Sider';
 import ModifyPassForm from './ModifyPass.js'
+import HistoryRecord from './HistoryRecord';
 
 const SubMenu = Menu.SubMenu;
 
@@ -40,7 +41,8 @@ function App() {
       <div id="rightWrap">
           <Menu mode="horizontal">
               <SubMenu title={<span><Icon type="user" />{ name }</span>}>
-                  <Menu.Item key="setting:1">退出</Menu.Item>
+                  <Menu.Item key="modifiedPass"><Link to="/app/password">修改密码</Link></Menu.Item>
+                  <Menu.Item key="setting"><Link to="/app/login">退出</Link></Menu.Item>
               </SubMenu>
           </Menu>
         <div className="right-box">
@@ -54,7 +56,8 @@ function App() {
               <Route path={`${url}/progress`} component={APPProgress}/>
               <Route path={`${url}/progress2`} component={Fund}/>
               <Route path={`${url}/carousel`} component={APPCarousel}/>
-              <Route path={`${url}/password`} component={ModifyPassForm}/>   
+              <Route path={`${url}/password`} component={ModifyPassForm}/>
+              <Route path={`${url}/history`} component={HistoryRecord}/>  
            </>) } 
           />
         </div>
