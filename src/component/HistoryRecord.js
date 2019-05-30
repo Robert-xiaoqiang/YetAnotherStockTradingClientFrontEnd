@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Divider, Tag, Button, message } from 'antd';
+import axios from 'axios';
 const { Column, ColumnGroup } = Table;
 
 
@@ -112,11 +113,24 @@ export default class HistoryRecord extends React.Component {
       ];
       this.state = {
         data: data,
-        columns: columns
+        columns: columns,
+        userinfo: JSON.parse(localStorage.getItem("userinfo")).username
       };
     }
     componentDidMount() {
-
+        axios.post(
+          '/api/history', {
+            userifo: this.state.userinfo
+          }).then(response => {
+            console.log(response);
+            if(response.data.length) {
+              this.setState({
+                data: response.data
+              });
+            }
+          }).catch(error => {
+            console.log('Error in HistoryRecord::componentDidMount', error);
+          })
     }
     handleDeleteRecord = e => {
 

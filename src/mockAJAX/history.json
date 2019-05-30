@@ -1,0 +1,44 @@
+{
+	"data": [
+		{
+          "key": "1",
+          "sellOrBuy": "Sell",
+          "stockId": "A007",
+          "number": 32,
+          "time": "今天",
+          "states": ["finished"],
+        },
+        {
+          "key": "2",
+          "sellOrBuy": "Sell",
+          "stockId": "A008 拼多多",
+          "number": 64,
+          "time": "今天",
+          "states": ["finished", "套死"],
+        },
+        {
+          "key": "3",
+          "sellOrBuy": "Buy",
+          "stockId": "B007",
+          "number": 32,
+          "time": "今天",
+          "states": ["交易中", "可撤销"],
+        },
+        {
+          "key": "4",
+          "sellOrBuy": "Sell",
+          "stockId": "B110",
+          "number": 32,
+          "time": "明天",
+          "states": ["交易中", "不可撤销"],
+        },
+        {
+          "key": "5",
+          "sellOrBuy": "Buy",
+          "stockId": "B119",
+          "number": 32768,
+          "time": "明天",
+          "states": ["finished", "不可撤销"],
+        },
+	]
+}

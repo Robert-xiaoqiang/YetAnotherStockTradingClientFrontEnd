@@ -13,7 +13,7 @@ import BuySellForm from './BuySellForm';
 import Sider from './Sider';
 import ModifyPassForm from './ModifyPass.js'
 import HistoryRecord from './HistoryRecord';
-
+import QueryStock from './QueryStock';
 const SubMenu = Menu.SubMenu;
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
           <Menu mode="horizontal">
               <SubMenu title={<span><Icon type="user" />{ name }</span>}>
                   <Menu.Item key="modifiedPass"><Link to="/app/password">修改密码</Link></Menu.Item>
-                  <Menu.Item key="setting"><Link to="/app/login">退出</Link></Menu.Item>
+                  <Menu.Item key="setting"><Link to="/login">退出</Link></Menu.Item>
               </SubMenu>
           </Menu>
         <div className="right-box">
@@ -51,10 +51,10 @@ function App() {
           render={ ({ match: { url } }) => (
             <>
               <Route path={`${url}/introduce`} component={Introduce} />
-              <Route path={`${url}/table`} component={Stockhold}/>
-              <Route path={`${url}/form`} component={BuySellForm}/>
-              <Route path={`${url}/progress`} component={APPProgress}/>
-              <Route path={`${url}/progress2`} component={Fund}/>
+              <Route path={`${url}/querystock`} component={QueryStock}/>
+              <Route path={`${url}/buysellform`} component={BuySellForm}/>
+              <Route path={`${url}/stockhold`} component={Stockhold}/>
+              <Route path={`${url}/fund`} component={Fund}/>
               <Route path={`${url}/carousel`} component={APPCarousel}/>
               <Route path={`${url}/password`} component={ModifyPassForm}/>
               <Route path={`${url}/history`} component={HistoryRecord}/>  

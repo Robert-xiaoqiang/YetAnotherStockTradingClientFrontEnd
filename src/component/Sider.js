@@ -10,10 +10,10 @@ const SubMenu = Menu.SubMenu;
 
 let routeMap = {
     '/introduce': '0',
-    '/table': '1',
-    '/form': '2',
-    '/progress': '3',
-    '/progress2': '4',
+    '/querystock': '1',
+    '/buysellform': '2',
+    '/stockhold': '3',
+    '/fund': '4',
     '/carousel': '5',
     '/password': '6',
     '/history': 7
@@ -61,10 +61,10 @@ class Sider extends React.Component {
                 >
                     <Menu.Item key="0"><Link to="/app/introduce"><Icon type="mail" />股市趣闻</Link></Menu.Item>
                     <SubMenu key="sub1" title={<span><Icon type="bars" /><span>主导航</span></span>}>
-                        <Menu.Item key="1"><Link to="/app/table">股票查询表格</Link></Menu.Item>
-                        <Menu.Item key="2"><Link to="/app/form">股票购买表单</Link></Menu.Item>
-                        <Menu.Item key="3"><Link to="/app/progress">个人股票一览</Link></Menu.Item>
-                        <Menu.Item key="4"><Link to="/app/progress2">个人资产一览</Link></Menu.Item>
+                        <Menu.Item key="1"><Link to="/app/querystock">股票查询表单</Link></Menu.Item>
+                        <Menu.Item key="2"><Link to="/app/buysellform">股票购买表单</Link></Menu.Item>
+                        <Menu.Item key="3"><Link to="/app/stockhold">个人股票一览</Link></Menu.Item>
+                        <Menu.Item key="4"><Link to="/app/fund">个人资产一览</Link></Menu.Item>
                         <Menu.Item key="5"><Link to="/app/carusel">股市惨案</Link></Menu.Item>
                         <Menu.Item key="6"><Link to="/app/password">修改密码</Link></Menu.Item>
                         <Menu.Item key="7"><Link to="/app/history">交易历史</Link></Menu.Item>
