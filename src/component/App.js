@@ -6,7 +6,7 @@ import { Menu, Icon } from 'antd';
 
 import Introduce from './Introduce.js';
 import APPProgress from './Progress.js';
-import APPCarousel from './Carousel.js';
+//import APPCarousel from './Carousel.js';
 import Stockhold from './Stockhold';
 import Fund from './Fund';
 import BuySellForm from './BuySellForm';
@@ -53,9 +53,8 @@ function App() {
               <Route path={`${url}/introduce`} component={Introduce} />
               <Route path={`${url}/querystock`} component={QueryStock}/>
               <Route path={`${url}/buysellform`} component={BuySellForm}/>
-              <Route path={`${url}/stockhold`} component={Stockhold}/>
+			  <Route path={`${url}/stockhold`} component={Stockhold}/>
               <Route path={`${url}/fund`} component={Fund}/>
-              <Route path={`${url}/carousel`} component={APPCarousel}/>
               <Route path={`${url}/password`} component={ModifyPassForm}/>
               <Route path={`${url}/history`} component={HistoryRecord}/>  
            </>) } 

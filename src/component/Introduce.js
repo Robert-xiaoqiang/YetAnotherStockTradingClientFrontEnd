@@ -8,9 +8,18 @@ export default class Introduce extends React.Component {
     render() {
         return (
             <div className="ani-box">
-                ZJU 2019 SE 股票交易系统交易客户端, 由JZY大佬全称Carry <br/>
-                据说90后股神没有一个获得过31岁 <br />
-                有关研究表明, 成年人没天都会有6小时左右的双眼紧闭的时间
+				<h2>欢迎来到股票交易系统客户端</h2>
+				<br/>
+				点击右侧主导航栏，您可以进行如下操作：
+				<br/>
+				·查询股票 &nbsp;&nbsp; ·购买股票 &nbsp;&nbsp; ·出售股票
+				<br/>
+				·浏览个人股票信息 &nbsp;&nbsp; ·浏览个人资产信息
+				<br/>
+				·浏览交易历史
+				<br/>
+				<br/>
+				点击右上角图标，您可选择退出登陆或修改密码
             </div>
         )
     }
