@@ -22,7 +22,7 @@ class NormalLoginForm extends React.Component {
                  * TODO
                  */
                 localStorage.setItem('userinfo', JSON.stringify(values));
-                message.success('login successed!'); //成功信息
+                message.success('成功登陆'); //成功信息
                 
                 setTimeout(() => { 
                     this.props.history.push({pathname:'/app', state: values});
@@ -41,22 +41,22 @@ class NormalLoginForm extends React.Component {
                 </Row>
                 <br />
                 <Row type="flex" justify="center">
-                    <h1 className="login-space">Welcome to Stock Trade System </h1>
+                    <h1 className="login-space">欢迎来到股票交易客户端</h1>
                 </Row>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <Row type="flex" justify="center">
-                <Form.Item>
+                <Form.Item label="用户名">
                     {getFieldDecorator('username', {
-                        rules: [{ required: true, message: 'Please input your username!' }],
+                        rules: [{ required: true, message: '请输入用户名！' }],
                     })(
                         <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)'}} />} placeholder="Username" style={{width: '400px'}}/>
                     )}
                 </Form.Item>
             </Row>
             <Row type="flex" justify="center">
-                <Form.Item>
+                <Form.Item label="密码">
                     {getFieldDecorator('password', {
-                        rules: [{ required: true, message: 'Please input your Password!' }],
+                        rules: [{ required: true, message: '请输入密码！' }],
                     })(
                         <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" style={{width: '400px'}}/>
                     )}
@@ -75,7 +75,7 @@ class NormalLoginForm extends React.Component {
             <Row type="flex" justify="center">
              <Form.Item>
                <Button type="primary" htmlType="submit" style={{width: '150px'}} className="login-form-button">
-                   Log in
+                   登陆
                </Button>
              </Form.Item>
             </Row>
