@@ -16,8 +16,23 @@ class ModifyPassForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values from Form: ', values);
-                localStorage.setItem('userinfo', JSON.stringify(values));
-                axios.post('/api/modifypass',
+				if(values.old_password == JSON.parse(localStorage.getItem("userinfo")).password) {
+					axios.post('/api/modifypass',
+						{
+							ID: this.state.userinfo,
+							Password: values.new_password,
+							Type: values.type
+						})
+						.then((response) => {
+							console.log(response)
+							console.log(response.data)
+						})
+						 message.success('成功修改密码');
+				}
+				else {
+					message.error('原密码有误');
+				}
+				/*axios.post('/api/modifypass',
                     {
                         ID: this.state.userinfo,
                         OldPass: values.old_password,
@@ -26,13 +41,12 @@ class ModifyPassForm extends React.Component {
                     })
                     .then((response) => {
                         console.log(response);
-                        let get_data = response.data;
                         console.log(response.data);
                     })
                     .catch(function (error) {
                         console.log(error)
                     });
-                message.success('成功修改密码'); //成功信息
+				message.success('成功修改密码'); //成功信息*/
             }
             else {
                 message.error('输入信息不足')

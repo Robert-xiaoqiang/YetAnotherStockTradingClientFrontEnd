@@ -3,6 +3,7 @@ import {
 } from 'antd';
 import React, { Component } from 'react';
 import '../css/NormalLoginForm.less';
+import axios from 'axios'
 //import welcome_svg from logo.svg
 
 class NormalLoginForm extends React.Component {
@@ -11,23 +12,35 @@ class NormalLoginForm extends React.Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+		this.props.form.validateFields((err, values) => {
+			let test_password = '1'
             if (!err) {
-                console.log('values from Form: ', values);
-                this.setState({
-                    isLoding: true,
-                });
-                /**
-                 * AXIO query username
-                 * TODO
-                 */
-                localStorage.setItem('userinfo', JSON.stringify(values));
-                message.success('成功登陆'); //成功信息
-                
-                setTimeout(() => { 
-                    this.props.history.push({pathname:'/app', state: values});
-                }, 2000);
-            }
+				console.log('values from Form: ', values);
+				localStorage.setItem('userinfo', JSON.stringify(values));
+				message.success('成功登陆');
+				setTimeout(() => {
+					this.props.history.push({pathname:'/app', state: values});
+				}, 2000);
+				/*axios.post('/api/login', {
+					ID: values.username
+				})
+					.then((reponse) => {
+						if(values.password == reponse.data.password) {
+							localStorage.setItem('userinfo', JSON.stringify(values));
+							message.success('成功登陆');
+							setTimeout(() => {
+								this.props.history.push({pathname:'/app', state: values}); 
+							}, 2000);
+						}
+						else {
+							message.error('密码有误');
+						}
+					})
+					*/   
+			}
+			else {
+				message.error('输入信息不足！');
+			}
         });
     }
 
