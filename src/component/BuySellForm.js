@@ -25,7 +25,7 @@ class BuySellForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                var seperator1="-"; 
+                var seperator1 = "-";
                 var now = new Date();
 
                 var sec = ("0" + now.getSeconds()).slice(-2);
@@ -42,13 +42,23 @@ class BuySellForm extends React.Component {
 
                 console.log(today);
 
+                console.log({
+                    ID: values.stockid,
+                    User_ID: this.state.userinfo,
+                    Buy: values.radioItem,
+                    Amount: values.number,
+                    Date: today,
+                    Price: values.price
+                })
+
                 axios.post('/api/sellorbuy',
                     {
-                        ID: this.state.userinfo,
-                        Buy: values.radioiTem,
+                        ID: values.stockid,
+                        User_ID: this.state.userinfo,
+                        Buy: values.radioItem,
                         Amount: values.number,
                         Date: today,
-                        Price : values.price
+                        Price: values.price
                     })
                     .then((response) => {
                         console.log(response);
