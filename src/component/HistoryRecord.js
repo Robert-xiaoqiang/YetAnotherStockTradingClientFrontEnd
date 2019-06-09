@@ -90,7 +90,7 @@ export default class HistoryRecord extends React.Component {
           title: 'Action',
           key: 'action',
           render: (text, record) => {
-            if(record.states.indexOf('finished') !== -1) {
+            if(record.states.indexOf('交易完成') !== -1) {
               return (
                 <span>
                   <Button type="danger" onClick={this.handleDeleteRecord}>删除记录</Button>
@@ -103,7 +103,7 @@ export default class HistoryRecord extends React.Component {
               <span>
                 <Button type="danger" onClick={this.handleDeleteRecord}>删除记录</Button>
                 <Divider type="vertical" />
-                <Button type="primary" onClick={this.handleCancelInstruction}>撤销指令</Button>
+                <Button type="primary" onClick={()=>{ this.handleCancelInstruction(record) }}>撤销指令</Button>
               </span>
               )
             }
@@ -111,16 +111,30 @@ export default class HistoryRecord extends React.Component {
           },
         },
       ];
+
+      // rowSelection objects indicates the need for row selection
+      const rowSelection = {
+        onChange: (selectedRowKeys, selectedRows) => {
+          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        },
+        onSelect: (record, selected, selectedRows) => {
+          console.log(record, selected, selectedRows);
+        },
+      };
+
       this.state = {
         data: data,
         columns: columns,
-        userinfo: JSON.parse(localStorage.getItem("userinfo")).username
+        userinfo: JSON.parse(localStorage.getItem("userinfo")).username,
+        rowSelection:rowSelection
       };
+
     }
     componentDidMount() {
+        console.log({userinfo:this.state.userinfo})
         axios.post(
-          '/api/history', {
-            userifo: this.state.userinfo
+          'http://localhost:8080/api/record/', {
+            userinfo: this.state.userinfo
           }).then(response => {
             console.log(response);
             if(response.data.length) {
@@ -133,12 +147,13 @@ export default class HistoryRecord extends React.Component {
           })
     }
     handleDeleteRecord = e => {
-
     }
-    handleCancelInstruction = e => {
+    handleCancelInstruction = record => {
+        console.log(record)
         message.success('I have posted everything!');
+        //加入post给中央交易系统
     };
     render() {
-      return <Table columns={this.state.columns} dataSource={this.state.data} />;
+      return <Table columns={this.state.columns} rowSelection = {this.state.rowSelection} dataSource={this.state.data} />;
     }
 }

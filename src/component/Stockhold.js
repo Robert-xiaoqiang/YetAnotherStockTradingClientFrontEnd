@@ -46,7 +46,7 @@ export default class Stockhold extends Component {
     }
     componentDidMount() {
 
-       axios.post('/api/mystock',
+       axios.post('http://localhost:8080/api/myStock',
         {
             userinfo:this.state.userinfo
         })
@@ -71,7 +71,7 @@ export default class Stockhold extends Component {
         let dataSource = this.state.data
         console.log(Array.isArray(dataSource)) 
         return (
-            <div style={{ background: '#ECECEC', height: '1000px' }}>
+            <div style={{ background: '#ECECEC', height: '500px' }}>
                 <Table columns={columns} dataSource={dataSource} onChange={onChange} />
             </div>
         );
