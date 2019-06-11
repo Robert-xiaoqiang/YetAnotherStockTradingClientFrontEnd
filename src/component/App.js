@@ -14,14 +14,28 @@ import Sider from './Sider';
 import ModifyPassForm from './ModifyPass.js'
 import HistoryRecord from './HistoryRecord';
 import QueryStock from './QueryStock';
+import axios from 'axios';
+import {api} from '../../src/json/config.json';
 const SubMenu = Menu.SubMenu;
 
 function App() {
+  const handleLogout = (e) => {
+    // axios.post(api+"account_logout").then(()=>
+    //   console.log("logout_success"),
+    //   axios.post(api + 'account_login_status').then(()=>{
+    //   })
+    // ).catch(()=>
+    //   console.log("logout_error")
+    // )
+    // console.log("Logout")
+    localStorage.clear()
+  }
+
   let name;
   if (localStorage.getItem("userinfo") === null) {
     return <Redirect to="/login"/>
   } else {
-    name = JSON.parse(localStorage.getItem("userinfo")).username;
+    name = JSON.parse(localStorage.getItem("userinfo")).user_id;
   }
   return (
     // <BrowserRouter>
@@ -42,7 +56,7 @@ function App() {
           <Menu mode="horizontal">
               <SubMenu title={<span><Icon type="user" />{ name }</span>}>
                   <Menu.Item key="modifiedPass"><Link to="/app/password">修改密码</Link></Menu.Item>
-                  <Menu.Item key="setting"><Link to="/login">退出</Link></Menu.Item>
+                  <Menu.Item key="setting" onClick = {handleLogout}><Link to="/login">退出</Link></Menu.Item>
               </SubMenu>
           </Menu>
         <div className="right-box">
