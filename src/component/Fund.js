@@ -3,7 +3,7 @@ import React , { Component} from 'react';
 import axios from 'axios';
 
 
-const api = "http://10.180.137.1:8080/"
+import {api} from '../json/config.json'
 
 export default class Fund extends Component{
     constructor(props){
