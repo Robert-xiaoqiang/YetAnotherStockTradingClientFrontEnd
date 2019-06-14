@@ -113,20 +113,20 @@ export default class HistoryRecord extends React.Component {
       ];
 
       // rowSelection objects indicates the need for row selection
-      const rowSelection = {
-        onChange: (selectedRowKeys, selectedRows) => {
-          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-        },
-        onSelect: (record, selected, selectedRows) => {
-          console.log(record, selected, selectedRows);
-        },
-      };
+      // const rowSelection = {
+      //   onChange: (selectedRowKeys, selectedRows) => {
+      //     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      //   },
+      //   onSelect: (record, selected, selectedRows) => {
+      //     console.log(record, selected, selectedRows);
+      //   },
+      // };
 
       this.state = {
-        data: data,
+        data: [],
         columns: columns,
-        userinfo: JSON.parse(localStorage.getItem("userinfo")).username,
-        rowSelection:rowSelection
+        userinfo: JSON.parse(localStorage.getItem("userinfo")).user_id,
+        //rowSelection:rowSelection
       };
 
     }
@@ -151,9 +151,13 @@ export default class HistoryRecord extends React.Component {
     handleCancelInstruction = record => {
         console.log(record)
         message.success('I have posted everything!');
-        //加入post给中央交易系统
+        axios.post(
+          'http://10.180.136.118:8080/cancel', {
+            Number: record['key']
+          }
+        )
     };
     render() {
-      return <Table columns={this.state.columns} rowSelection = {this.state.rowSelection} dataSource={this.state.data} />;
+      return <Table columns={this.state.columns} dataSource={this.state.data} />;
     }
 }

@@ -22,9 +22,9 @@ class NormalLoginForm extends React.Component {
             })
             fetch(api + '/account_login', {
                 body: data,
-                method: "POST",
+                method: 'POST',
                 credentials: 'include',
-                mode: "cors"
+                mode: 'cors'
             })
             .then(res=>res.json())
             .then(json=>{

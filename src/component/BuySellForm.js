@@ -51,7 +51,7 @@ class BuySellForm extends React.Component {
                     Price: values.price
                 })
 
-                axios.post('/api/sellorbuy',
+                axios.post('http://10.180.136.118:8080/instruction-update',
                     {
                         ID: values.stockid,
                         User_ID: this.state.userinfo,

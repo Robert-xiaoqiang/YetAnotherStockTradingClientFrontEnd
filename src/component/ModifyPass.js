@@ -17,7 +17,7 @@ class ModifyPassForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values from Form: ', values);
-                if (values.old_password == JSON.parse(localStorage.getItem("userinfo")).password) {
+                if (values.old_login_pwd == JSON.parse(localStorage.getItem("userinfo")).login_pwd) {
                     // axios.post('/api/modifypass',
                     // 	{
                     // 		ID: this.state.userinfo,

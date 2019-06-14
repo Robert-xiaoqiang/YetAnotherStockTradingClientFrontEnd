@@ -39,7 +39,7 @@ export default class Fund extends Component{
          
     // }
     
-    async componentWillMount(){
+    async componentDidMount(){
         const fund = await fetch(api + '/account_fund', {
             method: 'POST',
             credentials: 'include',
@@ -78,6 +78,7 @@ export default class Fund extends Component{
             avaFund : fund,
             frozenFund : freezing
         })
+        console.log(fund+" "+freezing)
     }
 
     render() {
