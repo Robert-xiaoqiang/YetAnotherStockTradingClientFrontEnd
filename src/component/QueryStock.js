@@ -5,6 +5,7 @@ import {
 import * as antd from 'antd';
 import React from 'react';
 import axios from 'axios';
+import {queryapi} from '../json/config.json'
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -15,16 +16,16 @@ class QueryStock extends React.Component {
         super(props)
         this.state = {
             stockID: null,
-            stockName: '',
-            latestTradingPrice: null,
-            buyHighest: null,
-            sellLowest: null,
-            dayHighest: null,
-            dayLowest: null,
-            weekHighest: null,
-            weekLowest: null,
-            monthHighest: null,
-            monthLowest: null,
+			stockName: '',
+			newest: null,
+            nowSellLow: null,
+            nowBuyHigh: null,
+            dayHigh: null,
+            dayLowe: null,
+            weekHigh: null,
+            weekLow: null,
+            monthHigh: null,
+            monthLow: null,
             information: ''
         }
     }
@@ -34,51 +35,28 @@ class QueryStock extends React.Component {
         e.preventDefault();
 
         this.props.form.validateFields((err, values) => {
-            if (!err) {
+			if (!err) {
                 console.log('Received values of form: ', values);
                 this.setState({
                     stockID: values.stockID,
-                    values: values.stockName
-                })
-                axios.post(
-                    '/api/querystock', {
-                        stockID: values.stockID,
-                        stockName: values.stockName
+                    stockName: values.stockName
+				})
+                axios.get(
+                    queryapi + '/api/querystock', {
+						params: {
+							stockID: values.stockID
+						}	
+						//stockName: values.stockName
                     }
-                ).then(response => {
-                    // this.setState(response.data);
-                    this.setState({
-                        // stockID: values.stockID,
-                        stockName: 'Naive SomeTimes',
-                        latestTradingPrice: 65536,
-                        buyHighest: 65536,
-                        sellLowest: 65536,
-                        dayHighest: 65536,
-                        dayLowest: 65536,
-                        weekHighest: 65536,
-                        weekLowest: 65536,
-                        monthHighest: 65536,
-                        monthLowest: 65536,
-                        information: '友谊第一, 比赛第二'
-                    });
+				)
+				.then((response) => {
+					console.log(response);
+					this.setState(response.data);
+					console.log(response.data);
                 }).catch(err => {
                     console.log(err);
-                    this.setState({
-                        // stockID: values.stockID,
-                        stockName: 'Naive SomeTimes',
-                        latestTradingPrice: 65536,
-                        buyHighest: 65536,
-                        sellLowest: 65536,
-                        dayHighest: 65536,
-                        dayLowest: 65536,
-                        weekHighest: 65536,
-                        weekLowest: 65536,
-                        monthHighest: 65536,
-                        monthLowest: 65536,
-                        information: '友谊第一, 比赛第二'
-                    });
-                });
-            }
+				});
+			}
             else {
                 message.error("输入信息不足!");
             }
@@ -117,7 +95,7 @@ class QueryStock extends React.Component {
                         getFieldDecorator('stockName', {
                             rules: [{ required: false, message: '股票名字' }],
                         })(
-                            <Input id="select-input" placeholder="Stock_id" />
+                            <Input id="select-input" placeholder="Stock_name" />
                         )
                     }
                 </FormItem >
@@ -126,18 +104,19 @@ class QueryStock extends React.Component {
                     &nbsp;&nbsp;&nbsp;
                 </FormItem>
             </Form>
-            <Descriptions title="Stock Info" bordered>
-                <Descriptions.Item label="Stock ID">{this.state.stockID}</Descriptions.Item>
-                <Descriptions.Item label="Stock Name">{this.state.stockName}</Descriptions.Item>
-                <Descriptions.Item label="CST Time" span={3}>
-                2019-06-24 18:00:00
-                </Descriptions.Item>
-                <Descriptions.Item label="Latest Trading" span={3}>
-                <Badge status="processing" text={this.state.latestTradingPrice} />
-                </Descriptions.Item>
-                <Descriptions.Item label="Day Lowest Price">${this.state.dayHighest}</Descriptions.Item>
-                <Descriptions.Item label="Day Highest Price">${this.state.dayLowest}</Descriptions.Item>
-                <Descriptions.Item label="Stock Info">
+            <Descriptions title="股票信息" bordered>
+                <Descriptions.Item label="股票ID">{this.state.stockID}</Descriptions.Item>
+                <Descriptions.Item label="股票名字">{this.state.stockName}</Descriptions.Item>
+				<Descriptions.Item label="最新成交价格">${this.state.newest}</Descriptions.Item>
+				<Descriptions.Item label="当前购买最高价格">${this.state.nowBuyHigh}</Descriptions.Item>
+				<Descriptions.Item label="当前购买最高价格">${this.state.nowSellLow}</Descriptions.Item>
+				<Descriptions.Item label="本日成交最高价格">${this.state.dayHigh}</Descriptions.Item>
+				<Descriptions.Item label="本日成交最低价格">${this.state.dayLow}</Descriptions.Item>
+				<Descriptions.Item label="本周成交最高价格">${this.state.weekHigh}</Descriptions.Item>
+				<Descriptions.Item label="本周成交最低价格">${this.state.weekLow}</Descriptions.Item>
+				<Descriptions.Item label="本月成交最高价格">${this.state.monthHigh}</Descriptions.Item>
+				<Descriptions.Item label="本月成交最低价格">${this.state.monthLow}</Descriptions.Item>
+				<Descriptions.Item label="重要公告">
                     <br />
                     { this.state.information }
                     <br />
