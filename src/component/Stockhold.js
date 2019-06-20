@@ -1,6 +1,7 @@
 import { Table } from 'antd';
 import React, { Component } from 'react';
 import axios from 'axios';
+import { ourapi } from '../json/config.json';
 
 const columns = [{
     title: '代码',
@@ -41,14 +42,14 @@ export default class Stockhold extends Component {
         super(props);
         this.state = {
             data: [],
-            userinfo: JSON.parse(localStorage.getItem("userinfo")).username
+            userinfo: JSON.parse(localStorage.getItem("userinfo")).user_id
         }
     }
     componentDidMount() {
 
-       axios.post('http://localhost:8080/api/myStock',
+       axios.post(ourapi + '/api/myStock',
         {
-            userinfo:this.state.userinfo
+            userinfo: this.state.userinfo
         })
         .then((response)=>{
             console.log(response);

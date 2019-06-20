@@ -3,7 +3,7 @@ import React , { Component} from 'react';
 import axios from 'axios';
 
 
-import {api} from '../json/config.json'
+import {capitalapi} from '../json/config.json'
 
 export default class Fund extends Component{
     constructor(props){
@@ -40,7 +40,7 @@ export default class Fund extends Component{
     // }
     
     async componentDidMount(){
-        const fund = await fetch(api + '/account_fund', {
+        const fund = await fetch(capitalapi + '/account_fund', {
             method: 'POST',
             credentials: 'include',
             mode: "cors"
@@ -57,7 +57,7 @@ export default class Fund extends Component{
         .catch(err=>{
             console.error(err);
         });
-        const freezing = await fetch(api + '/account_freezing_fund', {
+        const freezing = await fetch(capitalapi + '/account_freezing_fund', {
             method: 'POST',
             credentials: 'include',
             mode: "cors"

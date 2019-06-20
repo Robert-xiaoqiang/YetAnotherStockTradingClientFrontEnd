@@ -2,8 +2,8 @@ import {
     Form, Icon, Input, Button, Checkbox, message, Spin, Row, Col, Radio
 } from 'antd';
 import React, { Component } from 'react';
-import axios from 'axios'
-import {api} from '../json/config.json'
+import axios from 'axios';
+import {capitalapi} from '../json/config.json';
 
 class ModifyPassForm extends React.Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class ModifyPassForm extends React.Component {
                     Object.keys(values).forEach(key => {
                         data.append(key, values[key]);
                     });
-                    fetch(api + "/account_set_login_pwd", {
+                    fetch(capitalapi + "/account_set_login_pwd", {
                         body: data,
                         method: "POST",
                         credentials: 'include',

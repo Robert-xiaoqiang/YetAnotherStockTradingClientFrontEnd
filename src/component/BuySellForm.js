@@ -4,7 +4,7 @@ import {
 } from 'antd';
 //import { rule } from 'postcss';
 import axios from 'axios';
-
+import { centerapi } from '../json/config.json';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
@@ -51,7 +51,7 @@ class BuySellForm extends React.Component {
                     Price: values.price
                 })
 
-                axios.post('http://10.180.136.118:8080/instruction-update',
+                axios.post( centerapi + '/instruction-update',
                     {
                         ID: values.stockid,
                         User_ID: this.state.userinfo,

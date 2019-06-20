@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Table, Divider, Tag, Button, message } from 'antd';
 import axios from 'axios';
-const { Column, ColumnGroup } = Table;
+import { ourapi, centerapi } from '../json/config.json';
 
+const { Column, ColumnGroup } = Table;
 
 export default class HistoryRecord extends React.Component {
     constructor(props) {
@@ -133,7 +134,7 @@ export default class HistoryRecord extends React.Component {
     componentDidMount() {
         console.log({userinfo:this.state.userinfo})
         axios.post(
-          'http://localhost:8080/api/record/', {
+          ourapi + '/api/record/', {
             userinfo: this.state.userinfo
           }).then(response => {
             console.log(response);
@@ -152,7 +153,7 @@ export default class HistoryRecord extends React.Component {
         console.log(record)
         message.success('I have posted everything!');
         axios.post(
-          'http://10.180.136.118:8080/cancel', {
+          centerapi + '/cancel', {
             Number: record['key']
           }
         )

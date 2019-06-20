@@ -1,5 +1,6 @@
 {
-    "api": "http://localhost:8081",
-    "centerApi": "http://localhost:8081",
-	"queryapi": "http://localhost:8082"
+    "ourapi": "http://localhost:8080",
+    "capitalapi": "http://localhost:8081",
+    "queryapi": "http://localhost:8082",
+    "centerapi": "http://localhost:8083"
 }

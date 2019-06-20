@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import '../css/NormalLoginForm.less';
 import axios from 'axios'
 import { userInfo } from 'os';
-import {api} from '../json/config.json'
+import {capitalapi} from '../json/config.json'
 //import welcome_svg from logo.svg
 
 class NormalLoginForm extends React.Component {
@@ -20,7 +20,7 @@ class NormalLoginForm extends React.Component {
             Object.keys(values).forEach(key=>{
                 data.append(key, values[key]);
             })
-            fetch(api + '/account_login', {
+            fetch(capitalapi + '/account_login', {
                 body: data,
                 method: 'POST',
                 credentials: 'include',
